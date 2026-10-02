@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import type { FrontDoorTarget, MigrationState } from "./api.ts";
 
 /**
@@ -28,11 +29,19 @@ export function Schematic({
     target?.recordValue ??
     (state.serving === "aws" ? state.awsSide?.loadBalancerDns : "store-onprem");
 
+  // On a narrow screen, keep the part of the drawing that matters in view: the
+  // front door and whichever route it is using.
+  const scroller = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = scroller.current;
+    if (el && el.scrollWidth > el.clientWidth) el.scrollLeft = flowingTo === "aws" ? 100 : 60;
+  }, [flowingTo]);
+
   const onPremState = decommissioned ? "void" : frozen ? "frozen" : "live";
   const awsState = awsBuilt ? "live" : "phantom";
 
   return (
-    <div className="schematic-scroll">
+    <div className="schematic-scroll" ref={scroller}>
       <svg
         className="schematic"
         viewBox="0 0 820 352"

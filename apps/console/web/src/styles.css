@@ -235,28 +235,16 @@ button {
   gap: 12px;
 }
 
-.layout {
-  align-items: stretch;
-}
-
-.main-col {
-  grid-template-rows: auto 1fr;
-}
-
-.traffic-panel {
-  display: flex;
-  flex-direction: column;
-}
-
-.traffic-panel .chart-wrap {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+/* The drawing is the subject: it stays in view while the schedule scrolls past. */
+@media (min-width: 981px) {
+  .main-col {
+    position: sticky;
+    top: 16px;
+  }
 }
 
 .traffic-panel .chart {
-  flex: 1;
-  min-height: 180px;
+  height: clamp(180px, 28vh, 300px);
 }
 
 .panel {
@@ -291,6 +279,13 @@ button {
 
 .schematic-scroll {
   overflow-x: auto;
+}
+
+/* Below this the drawing would shrink past legibility: hold a readable scale and scroll. */
+@media (max-width: 720px) {
+  .schematic {
+    min-width: 640px;
+  }
 }
 
 .schematic {
