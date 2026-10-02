@@ -27,13 +27,15 @@ team, interviews): a clear README and a polished console, no tutorial hand-holdi
 
 1. **Assess**: inventory the on-prem side (tables, row counts, app version).
 2. **Prepare**: deploy the CloudFormation stack.
-3. **Freeze**: on-prem stops accepting writes; reads keep working.
+3. **Freeze**: on-prem rejects writes with a "try again" response; reads keep working. Rejected writes show as errors on the traffic chart.
 4. **Copy**: pg_dump on-prem, restore into RDS.
 5. **Verify**: per-table row counts and checksums, plus a smoke order through the AWS side. A failure blocks Cutover.
 6. **Cutover**: point the Route53 record at the AWS load balancer, then lift the freeze.
 7. **Decommission**: take a final backup, then remove the on-prem app and database. Point of no return.
 
-**Rollback** is available from Freeze through Cutover. **Reset** returns everything to
+**Rollback** is available from Freeze through Cutover. Rolling back after Cutover
+discards stranded orders (orders placed on the AWS side since cutover); the console
+states how many and asks for confirmation. **Reset** returns everything to
 the starting state so the demo can be replayed.
 
 **Fault injection**: a console toggle that corrupts data during Copy, so Verify visibly

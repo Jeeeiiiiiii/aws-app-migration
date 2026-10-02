@@ -42,7 +42,7 @@ The phase that brings the AWS side into existence, empty of data and receiving n
 _Avoid_: Provision, bootstrap
 
 **Freeze**:
-The phase during which on-prem stops accepting writes so its data cannot change while being moved.
+The phase during which on-prem rejects writes so its data cannot change while being moved; shoppers are told to try again.
 _Avoid_: Maintenance mode, lock, write lock
 
 **Copy**:
@@ -75,6 +75,10 @@ The moment after which rollback is impossible; decommission.
 **Rollback**:
 Abandoning the migration and returning the serving environment to on-prem.
 _Avoid_: Revert, undo, abort
+
+**Stranded order**:
+An order placed on the AWS side after cutover, which a rollback would discard.
+_Avoid_: Lost order, orphan
 
 **Reset**:
 Returning the whole demo to its state before the migration so it can be replayed.
