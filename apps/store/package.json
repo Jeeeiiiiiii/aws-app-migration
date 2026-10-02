@@ -1,0 +1,30 @@
+{
+  "name": "@demo/store",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.ts",
+    "dev:web": "vite",
+    "build": "vite build",
+    "typecheck": "tsc -p . && tsc -p web",
+    "test": "node --test src/*.test.ts"
+  },
+  "dependencies": {
+    "@demo/store-db": "workspace:*",
+    "@hono/node-server": "^1",
+    "hono": "^4",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^5",
+    "react": "^19",
+    "react-dom": "^19",
+    "vite": "^7"
+  },
+  "exports": {
+    "./app": "./src/app.ts"
+  }
+}

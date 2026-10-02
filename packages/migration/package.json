@@ -1,0 +1,24 @@
+{
+  "name": "@demo/migration",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./adapters": "./src/adapters/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p .",
+    "test": "node --test --test-concurrency=1 src/*.test.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudformation": "^3",
+    "@aws-sdk/client-route-53": "^3",
+    "@demo/store-db": "workspace:*",
+    "pg": "^8"
+  },
+  "devDependencies": {
+    "@demo/store": "workspace:*",
+    "@hono/node-server": "^1",
+    "@types/pg": "^8"
+  }
+}

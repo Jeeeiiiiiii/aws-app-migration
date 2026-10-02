@@ -1,0 +1,139 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: AWS side of the store migration - RDS Postgres, ECS Fargate service behind an ALB.
+
+Parameters:
+  StoreImage:
+    Type: String
+    Description: Container image for the store (same image as on-prem).
+  DbPassword:
+    Type: String
+    NoEcho: true
+  ListenerPort:
+    Type: Number
+    Default: 8080
+
+Resources:
+  Vpc:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.20.0.0/16
+  SubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref Vpc
+      CidrBlock: 10.20.1.0/24
+      AvailabilityZone: us-east-1a
+  SubnetB:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref Vpc
+      CidrBlock: 10.20.2.0/24
+      AvailabilityZone: us-east-1b
+  StoreSg:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Store tasks and load balancer
+      VpcId: !Ref Vpc
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 0
+          ToPort: 65535
+          CidrIp: 0.0.0.0/0
+
+  Db:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceIdentifier: store-db
+      Engine: postgres
+      EngineVersion: "16.3"
+      DBInstanceClass: db.t3.micro
+      AllocatedStorage: "20"
+      DBName: store
+      MasterUsername: store
+      MasterUserPassword: !Ref DbPassword
+
+  Cluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: store
+  TaskDef:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: store
+      RequiresCompatibilities: [FARGATE]
+      NetworkMode: awsvpc
+      Cpu: "256"
+      Memory: "512"
+      ContainerDefinitions:
+        - Name: store
+          Image: !Ref StoreImage
+          PortMappings:
+            - ContainerPort: 3000
+          Environment:
+            # Floci's !Sub doesn't resolve ${Resource.Attribute}, so the store
+            # assembles its connection string from parts.
+            - Name: SERVING_ENV
+              Value: aws
+            - Name: DB_HOST
+              Value: !GetAtt Db.Endpoint.Address
+            - Name: DB_PORT
+              Value: !GetAtt Db.Endpoint.Port
+            - Name: DB_NAME
+              Value: store
+            - Name: DB_USER
+              Value: store
+            - Name: DB_PASSWORD
+              Value: !Ref DbPassword
+            - Name: DB_LABEL
+              Value: "RDS store-db"
+  TargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      Name: store-tg
+      TargetType: ip
+      Protocol: HTTP
+      Port: 3000
+      VpcId: !Ref Vpc
+      HealthCheckPath: /api/health
+  Alb:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Name: store-alb
+      Subnets: [!Ref SubnetA, !Ref SubnetB]
+      SecurityGroups: [!Ref StoreSg]
+  Listener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      LoadBalancerArn: !Ref Alb
+      Port: !Ref ListenerPort
+      Protocol: HTTP
+      DefaultActions:
+        - Type: forward
+          TargetGroupArn: !Ref TargetGroup
+  Service:
+    Type: AWS::ECS::Service
+    DependsOn: Listener
+    Properties:
+      ServiceName: store
+      Cluster: !Ref Cluster
+      TaskDefinition: !Ref TaskDef
+      LaunchType: FARGATE
+      DesiredCount: 1
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          Subnets: [!Ref SubnetA, !Ref SubnetB]
+          SecurityGroups: [!Ref StoreSg]
+      LoadBalancers:
+        - ContainerName: store
+          ContainerPort: 3000
+          TargetGroupArn: !Ref TargetGroup
+
+Outputs:
+  DbHost:
+    Value: !GetAtt Db.Endpoint.Address
+  DbPort:
+    Value: !GetAtt Db.Endpoint.Port
+  LoadBalancerDns:
+    Value: !GetAtt Alb.DNSName
+  ListenerPort:
+    Value: !Ref ListenerPort
