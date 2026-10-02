@@ -1,0 +1,25 @@
+name: End-to-end migration
+
+# The full migration on Floci, with synthetic traffic: a few minutes, so run on demand.
+on:
+  workflow_dispatch:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: docker compose up -d --build
+      - name: Wait for the control plane
+        run: timeout 180 sh -c 'until curl -sf localhost:4000/api/state > /dev/null; do sleep 2; done'
+      - run: pnpm test:e2e
+      - if: failure()
+        run: docker compose logs --tail 200
+      - if: always()
+        run: docker compose down -v

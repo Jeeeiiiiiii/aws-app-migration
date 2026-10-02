@@ -44,7 +44,11 @@ export interface LogEntry {
   level: "info" | "warn" | "error";
   phase?: PhaseName;
   message: string;
+  /** Set on the entries that change who serves or whether on-prem exists. */
+  milestone?: Milestone;
 }
+
+export type Milestone = "cutover" | "rollback" | "decommission" | "reset";
 
 export interface MigrationState {
   phases: Record<PhaseName, PhaseState>;

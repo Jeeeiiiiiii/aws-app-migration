@@ -22,6 +22,7 @@ import {
   MigrationBusyError,
   type MigrationEvent,
   type MigrationState,
+  type Milestone,
   NothingToRollBackError,
   PastPointOfNoReturnError,
   PHASES,
@@ -78,8 +79,13 @@ export async function createMigration(deps: MigrationDeps): Promise<Migration> {
   const emit = (event: MigrationEvent) => {
     for (const l of listeners) l(event);
   };
-  const log = (message: string, level: LogEntry["level"] = "info", phase?: PhaseName) => {
-    const entry: LogEntry = { at: new Date().toISOString(), level, phase, message };
+  const log = (
+    message: string,
+    level: LogEntry["level"] = "info",
+    phase?: PhaseName,
+    milestone?: Milestone,
+  ) => {
+    const entry: LogEntry = { at: new Date().toISOString(), level, phase, message, milestone };
     progress.log = [...progress.log, entry].slice(-LOG_LIMIT);
     emit({ type: "log", entry });
   };
@@ -204,7 +210,8 @@ export async function createMigration(deps: MigrationDeps): Promise<Migration> {
         finishedAt: new Date().toISOString(),
         summary,
       };
-      log(summary, "info", phase);
+      const milestone = phase === "cutover" || phase === "decommission" ? phase : undefined;
+      log(summary, "info", phase, milestone);
     } catch (err) {
       const error = err instanceof Error ? err.message : String(err);
       progress.phases[phase] = {
@@ -284,7 +291,12 @@ export async function createMigration(deps: MigrationDeps): Promise<Migration> {
         for (const p of ROLLBACK_SPAN) progress.phases[p] = { status: "pending" };
         progress.verification = null;
         progress.cutoverMark = null;
-        log("Rolled back: on-prem is serving and accepting writes. The AWS side is kept.", "warn");
+        log(
+          "Rolled back: on-prem is serving and accepting writes. The AWS side is kept.",
+          "warn",
+          undefined,
+          "rollback",
+        );
       }),
 
     reset: () =>
@@ -299,7 +311,12 @@ export async function createMigration(deps: MigrationDeps): Promise<Migration> {
           await rm(entry, { force: true });
         }
         progress = blank();
-        log("Reset complete: on-prem is serving seed data; the AWS side does not exist.");
+        log(
+          "Reset complete: on-prem is serving seed data; the AWS side does not exist.",
+          "info",
+          undefined,
+          "reset",
+        );
       }),
 
     subscribe(listener) {
