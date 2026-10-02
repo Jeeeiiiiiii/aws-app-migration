@@ -60,7 +60,9 @@ export function Controls({ state }: { state: MigrationState }) {
           disabled={next !== "copy" || busy}
           onChange={(e) => setFault(e.target.checked)}
         />
-        Fault injection: lose orders in transit during the next Copy
+        {next === "copy"
+          ? "Fault injection: lose orders in transit during this Copy"
+          : "Fault injection: available just before Copy (roll back to arm it again)"}
       </label>
 
       {confirmRollback && state.strandedOrders > 0 ? (

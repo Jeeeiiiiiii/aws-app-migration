@@ -76,7 +76,7 @@ export function App() {
               </header>
               <Schematic state={state} target={target} revision={revision} rps={rps} />
             </section>
-            <section className="panel" aria-labelledby="traffic">
+            <section className="panel traffic-panel" aria-labelledby="traffic">
               <header>
                 <h2 id="traffic">Traffic through the front door</h2>
                 <span className="aside">synthetic shoppers · requests per second</span>

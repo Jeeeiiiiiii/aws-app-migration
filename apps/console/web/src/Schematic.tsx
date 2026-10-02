@@ -100,6 +100,7 @@ export function Schematic({
         <Route
           d="M288 150 H322 V82 H380"
           active={flowingTo === "on-prem"}
+          superseded={cutOver && flowingTo === "aws"}
           color="var(--onprem)"
           flowing={rps > 0}
         />
@@ -161,7 +162,7 @@ export function Schematic({
 
         {/* AWS side */}
         <rect className="zone" x="330" y="180" width="474" height="142" />
-        <text x="344" y="198" className="t-zone">
+        <text x="504" y="198" className="t-zone">
           {awsBuilt ? "AWS SIDE · US-EAST-1 · FLOCI" : "AWS SIDE · NOT BUILT"}
         </text>
         <Node x={350} y={214} w={124} title="Load balancer" sub="ALB :8080" state={awsState} />
@@ -170,7 +171,7 @@ export function Schematic({
         <path className="wire" d="M630 244 H650" opacity={awsBuilt ? 0.7 : 0.3} />
         <Node x={650} y={214} w={134} title="Postgres" sub="RDS" state={awsState} />
         {awsBuilt && (
-          <text x="350" y="300" className="t-sub">
+          <text x="792" y="316" textAnchor="end" className="t-sub">
             ECS runs the locally built image; in real AWS it would be pulled from ECR.
           </text>
         )}
@@ -182,9 +183,9 @@ export function Schematic({
               className="rev-cloud"
               data-drawing={justCutOver}
               pathLength={1}
-              d={cloud(300, 170, 496, 164, 11)}
+              d={cloud(298, 190, 186, 104, 10)}
             />
-            <g className="rev-delta" data-drawing={justCutOver} transform="translate(796 170)">
+            <g className="rev-delta" data-drawing={justCutOver} transform="translate(484 190)">
               <polygon points="0,-12 12,9 -12,9" />
               <text x="0" y="6" textAnchor="middle">
                 {revision}
@@ -202,17 +203,20 @@ function Route({
   active,
   color,
   flowing,
+  superseded = false,
 }: {
   d: string;
   active: boolean;
   color: string;
   flowing: boolean;
+  superseded?: boolean;
 }) {
   return (
     <g>
       <path
         className="route"
         data-active={active}
+        data-superseded={superseded}
         style={{ "--route-color": color } as React.CSSProperties}
         d={d}
       />

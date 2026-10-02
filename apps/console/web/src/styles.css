@@ -235,6 +235,30 @@ button {
   gap: 12px;
 }
 
+.layout {
+  align-items: stretch;
+}
+
+.main-col {
+  grid-template-rows: auto 1fr;
+}
+
+.traffic-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.traffic-panel .chart-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.traffic-panel .chart {
+  flex: 1;
+  min-height: 180px;
+}
+
 .panel {
   background: var(--sheet);
   border: 1px solid var(--rule-strong);
@@ -267,12 +291,6 @@ button {
 
 .schematic-scroll {
   overflow-x: auto;
-}
-
-@media (max-width: 720px) {
-  .schematic {
-    min-width: 680px;
-  }
 }
 
 .schematic {
@@ -371,6 +389,12 @@ button {
   transition:
     stroke 300ms ease,
     stroke-width 300ms ease;
+}
+
+.schematic .route[data-superseded="true"] {
+  stroke: var(--onprem);
+  stroke-dasharray: 2 5;
+  opacity: 0.6;
 }
 
 .schematic .route[data-active="true"] {
@@ -494,7 +518,14 @@ button {
   color: var(--ink);
 }
 
+.chart {
+  position: relative;
+}
+
 .chart svg {
+  position: absolute;
+  inset: 0;
+  height: 100%;
   display: block;
   width: 100%;
   overflow: visible;
@@ -814,10 +845,13 @@ button {
   background: var(--sheet);
 }
 
-.toggle input:disabled,
 .toggle:has(input:disabled) {
   cursor: not-allowed;
-  opacity: 0.55;
+}
+
+.toggle input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .confirm {
@@ -926,6 +960,16 @@ button {
   padding: 14px;
   color: var(--ink-3);
   font-size: 0.86rem;
+}
+
+@media (max-width: 720px) {
+  .panel > header {
+    flex-wrap: wrap;
+  }
+  .panel > header .aside {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
 }
 
 @media (max-width: 980px) {

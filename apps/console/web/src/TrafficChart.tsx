@@ -19,19 +19,23 @@ function values(s: TrafficSecond): Record<Key, number> {
   };
 }
 
-const HEIGHT = 168;
 const PAD = { top: 8, right: 8, bottom: 22, left: 34 };
 const GAP = 2;
 
 export function TrafficChart({ seconds }: { seconds: TrafficSecond[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(640);
+  const [height, setHeight] = useState(180);
   const [hover, setHover] = useState<number | null>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const observer = new ResizeObserver(([entry]) => entry && setWidth(entry.contentRect.width));
+    const observer = new ResizeObserver(([entry]) => {
+      if (!entry) return;
+      setWidth(entry.contentRect.width);
+      setHeight(Math.max(180, entry.contentRect.height));
+    });
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
@@ -48,7 +52,7 @@ export function TrafficChart({ seconds }: { seconds: TrafficSecond[] }) {
     Math.max(4, ...slots.map(({ v }) => (v ? v.onPrem + v.aws + v.rejected + v.failed : 0))),
   );
   const plotW = Math.max(100, width - PAD.left - PAD.right);
-  const plotH = HEIGHT - PAD.top - PAD.bottom;
+  const plotH = height - PAD.top - PAD.bottom;
   const slotW = plotW / WINDOW_SECONDS;
   const barW = Math.min(24, Math.max(1, slotW - GAP));
   const y = (n: number) => PAD.top + plotH - (n / max) * plotH;
@@ -70,7 +74,7 @@ export function TrafficChart({ seconds }: { seconds: TrafficSecond[] }) {
       </ul>
       <div ref={ref} className="chart" onPointerLeave={() => setHover(null)}>
         <svg
-          height={HEIGHT}
+          height={height}
           role="img"
           aria-label="Requests per second through the front door, last two minutes, by outcome"
         >
@@ -87,13 +91,13 @@ export function TrafficChart({ seconds }: { seconds: TrafficSecond[] }) {
               key={ago}
               className="axis-text"
               x={PAD.left + plotW - (ago / WINDOW_SECONDS) * plotW}
-              y={HEIGHT - 6}
+              y={height - 6}
               textAnchor="middle"
             >
               −{ago}s
             </text>
           ))}
-          <text className="axis-text" x={PAD.left + plotW} y={HEIGHT - 6} textAnchor="end">
+          <text className="axis-text" x={PAD.left + plotW} y={height - 6} textAnchor="end">
             now
           </text>
 
@@ -231,8 +235,9 @@ function Segment({
 }
 
 function niceMax(n: number): number {
-  const step = 10 ** Math.floor(Math.log10(n));
-  for (const m of [1, 2, 2.5, 5, 10]) {
+  const step = Math.max(1, 10 ** Math.floor(Math.log10(n)));
+  // Even multiples only, so the midline tick is a whole number of requests.
+  for (const m of [1, 2, 4, 6, 8, 10]) {
     if (m * step >= n) return m * step;
   }
   return 10 * step;
