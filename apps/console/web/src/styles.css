@@ -24,6 +24,8 @@
   --failed: #d63c59;
   --signal: #f08a24;
   --signal-ink: #ffb46b;
+  --on-signal: #0e2847;
+  --delta: var(--signal);
   --ok: #4cc38a;
   --focus: #8fd3ff;
   --grid: rgba(210, 227, 240, 0.045);
@@ -55,6 +57,8 @@
   --failed: #b1234a;
   --signal: #c55a00;
   --signal-ink: #a14800;
+  --on-signal: #ffffff;
+  --delta: var(--signal-ink);
   --ok: #1d8a57;
   --focus: #0b6bcb;
   --grid: rgba(23, 48, 79, 0.05);
@@ -928,8 +932,8 @@ button {
   font-family: var(--lettering);
   font-weight: 600;
   font-size: 0.75rem;
-  color: var(--ink);
-  background: var(--signal);
+  color: var(--on-signal);
+  background: var(--delta);
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
 }
 

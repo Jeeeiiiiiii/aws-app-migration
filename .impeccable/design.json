@@ -1,0 +1,981 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-02T10:47:50+00:00",
+  "title": "Design System: Store Migration",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Cyanotype Ground",
+        "theme": "dark",
+        "canonical": "oklch(27.5% 0.066 254.5)",
+        "tonalRamp": [
+          "#000b1f",
+          "#0a2443",
+          "#264162",
+          "#445f82",
+          "#627fa4",
+          "#83a1c7",
+          "#a8c7ef",
+          "#e4f0ff"
+        ]
+      },
+      "sheet": {
+        "role": "neutral",
+        "displayName": "Sheet Blue",
+        "theme": "dark",
+        "canonical": "oklch(29.6% 0.073 254.8)",
+        "tonalRamp": [
+          "#000b1f",
+          "#072446",
+          "#234165",
+          "#415f86",
+          "#607fa8",
+          "#80a1cb",
+          "#a5c7f3",
+          "#e4f0ff"
+        ]
+      },
+      "well": {
+        "role": "neutral",
+        "displayName": "Well Blue",
+        "theme": "dark",
+        "canonical": "oklch(25.2% 0.064 256.2)",
+        "tonalRamp": [
+          "#000a1f",
+          "#0d2442",
+          "#294161",
+          "#465f81",
+          "#647fa3",
+          "#85a0c6",
+          "#aac6ee",
+          "#e4f0ff"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "theme": "dark",
+        "canonical": "oklch(95.0% 0.014 238.0)",
+        "tonalRamp": [
+          "#060c10",
+          "#1e252a",
+          "#394147",
+          "#565f65",
+          "#767f85",
+          "#97a0a6",
+          "#bcc6cc",
+          "#e6f0f7"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2",
+        "theme": "dark",
+        "canonical": "oklch(82.2% 0.036 244.3)",
+        "tonalRamp": [
+          "#000c19",
+          "#142634",
+          "#2f4252",
+          "#4d6071",
+          "#6c8092",
+          "#8ca1b4",
+          "#b1c7da",
+          "#e1f1ff"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink 3",
+        "theme": "dark",
+        "canonical": "oklch(70.3% 0.048 245.5)",
+        "tonalRamp": [
+          "#000c1a",
+          "#0d263a",
+          "#294258",
+          "#476177",
+          "#668199",
+          "#86a2bb",
+          "#abc8e2",
+          "#e1f1ff"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "theme": "dark",
+        "canonical": "oklch(38.5% 0.076 253.3)",
+        "tonalRamp": [
+          "#000b1e",
+          "#032447",
+          "#204167",
+          "#3e6088",
+          "#5d80aa",
+          "#7da1cd",
+          "#a2c8f5",
+          "#e4f0fe"
+        ]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Rule Strong",
+        "theme": "dark",
+        "canonical": "oklch(52.4% 0.073 251.3)",
+        "tonalRamp": [
+          "#000b1d",
+          "#022545",
+          "#204265",
+          "#3e6085",
+          "#5d80a7",
+          "#7da2cb",
+          "#a2c8f2",
+          "#e3f0fe"
+        ]
+      },
+      "line": {
+        "role": "primary",
+        "displayName": "Drafting Line",
+        "theme": "dark",
+        "canonical": "oklch(90.7% 0.025 240.7)",
+        "tonalRamp": [
+          "#030c15",
+          "#19262f",
+          "#34424c",
+          "#51606b",
+          "#70808b",
+          "#91a1ad",
+          "#b6c7d3",
+          "#e0f1fe"
+        ]
+      },
+      "onprem": {
+        "role": "secondary",
+        "displayName": "On-prem Violet",
+        "theme": "dark",
+        "canonical": "oklch(66.8% 0.158 299.8)",
+        "tonalRamp": [
+          "#110126",
+          "#30025a",
+          "#4f1f84",
+          "#6d42a8",
+          "#8c63cc",
+          "#ae85f1",
+          "#ceb5fe",
+          "#f1ebff"
+        ]
+      },
+      "aws": {
+        "role": "secondary",
+        "displayName": "AWS Teal",
+        "theme": "dark",
+        "canonical": "oklch(62.3% 0.106 214.0)",
+        "tonalRamp": [
+          "#000e12",
+          "#022931",
+          "#044854",
+          "#0a697a",
+          "#118ca2",
+          "#3bafc7",
+          "#68d6ee",
+          "#d3f6fe"
+        ]
+      },
+      "rejected": {
+        "role": "chart",
+        "displayName": "Freeze Amber",
+        "theme": "dark",
+        "canonical": "oklch(66.0% 0.133 73.9)",
+        "tonalRamp": [
+          "#130900",
+          "#331f02",
+          "#573904",
+          "#7e540a",
+          "#a77112",
+          "#cf902d",
+          "#f7b659",
+          "#ffebd3"
+        ]
+      },
+      "failed": {
+        "role": "chart",
+        "displayName": "Fault Crimson",
+        "theme": "dark",
+        "canonical": "oklch(59.1% 0.190 14.6)",
+        "tonalRamp": [
+          "#1e0004",
+          "#4a0114",
+          "#7a0126",
+          "#af053a",
+          "#d63c59",
+          "#fd6179",
+          "#fdaab0",
+          "#ffe8e9"
+        ]
+      },
+      "signal": {
+        "role": "tertiary",
+        "displayName": "Safety Orange",
+        "theme": "dark",
+        "canonical": "oklch(72.9% 0.162 58.8)",
+        "tonalRamp": [
+          "#160700",
+          "#391b00",
+          "#613201",
+          "#8b4b02",
+          "#b86504",
+          "#e68112",
+          "#fdb173",
+          "#feeadb"
+        ]
+      },
+      "signal-ink": {
+        "role": "tertiary",
+        "displayName": "Signal Text",
+        "theme": "dark",
+        "canonical": "oklch(82.7% 0.125 63.8)",
+        "tonalRamp": [
+          "#150800",
+          "#371d01",
+          "#5d3401",
+          "#874e03",
+          "#b06b18",
+          "#d48c42",
+          "#fdb269",
+          "#ffead8"
+        ]
+      },
+      "ok": {
+        "role": "neutral",
+        "displayName": "OK Green",
+        "theme": "dark",
+        "canonical": "oklch(73.5% 0.136 159.3)",
+        "tonalRamp": [
+          "#000f06",
+          "#022c1a",
+          "#064c30",
+          "#0e6f48",
+          "#169461",
+          "#3fb87f",
+          "#6adfa4",
+          "#c5fedd"
+        ]
+      },
+      "focus": {
+        "role": "neutral",
+        "displayName": "Focus Sky",
+        "theme": "dark",
+        "canonical": "oklch(83.7% 0.092 237.7)",
+        "tonalRamp": [
+          "#000d17",
+          "#02273b",
+          "#054564",
+          "#1d648b",
+          "#4285ae",
+          "#64a7d1",
+          "#89cdf9",
+          "#dff2ff"
+        ]
+      },
+      "print-ground": {
+        "role": "neutral",
+        "displayName": "Cyanotype Ground (printed)",
+        "theme": "light",
+        "canonical": "oklch(94.7% 0.010 252.8)",
+        "tonalRamp": [
+          "#080b0f",
+          "#212429",
+          "#3c4045",
+          "#5a5e63",
+          "#797e83",
+          "#9a9fa4",
+          "#c0c5ca",
+          "#eaeff5"
+        ]
+      },
+      "print-sheet": {
+        "role": "neutral",
+        "displayName": "Sheet Blue (printed)",
+        "theme": "light",
+        "canonical": "oklch(99.1% 0.002 247.8)",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#232425",
+          "#3f4041",
+          "#5d5e5e",
+          "#7c7d7e",
+          "#9d9e9f",
+          "#c3c4c5",
+          "#edeeef"
+        ]
+      },
+      "print-well": {
+        "role": "neutral",
+        "displayName": "Well Blue (printed)",
+        "theme": "light",
+        "canonical": "oklch(96.8% 0.007 247.9)",
+        "tonalRamp": [
+          "#090b0e",
+          "#212427",
+          "#3d4043",
+          "#5b5e61",
+          "#7a7e81",
+          "#9b9fa2",
+          "#c1c5c8",
+          "#ebeff3"
+        ]
+      },
+      "print-ink": {
+        "role": "neutral",
+        "displayName": "Ink (printed)",
+        "theme": "light",
+        "canonical": "oklch(23.8% 0.054 256.1)",
+        "tonalRamp": [
+          "#000a1f",
+          "#11243e",
+          "#2c415c",
+          "#495f7c",
+          "#687f9e",
+          "#89a0c0",
+          "#aec6e8",
+          "#e4f0ff"
+        ]
+      },
+      "print-ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2 (printed)",
+        "theme": "light",
+        "canonical": "oklch(42.3% 0.049 251.2)",
+        "tonalRamp": [
+          "#000b1d",
+          "#11253b",
+          "#2c4259",
+          "#496079",
+          "#68809a",
+          "#89a1bc",
+          "#aec7e3",
+          "#e3f0fe"
+        ]
+      },
+      "print-ink-3": {
+        "role": "neutral",
+        "displayName": "Ink 3 (printed)",
+        "theme": "light",
+        "canonical": "oklch(51.3% 0.041 251.2)",
+        "tonalRamp": [
+          "#010c1b",
+          "#152537",
+          "#304155",
+          "#4d6074",
+          "#6c7f95",
+          "#8ca1b7",
+          "#b1c7de",
+          "#e3f0ff"
+        ]
+      },
+      "print-rule": {
+        "role": "neutral",
+        "displayName": "Rule (printed)",
+        "theme": "light",
+        "canonical": "oklch(89.3% 0.019 250.6)",
+        "tonalRamp": [
+          "#060c13",
+          "#1d252d",
+          "#394149",
+          "#565f68",
+          "#757e88",
+          "#96a0aa",
+          "#bbc5d0",
+          "#e6f0fb"
+        ]
+      },
+      "print-rule-strong": {
+        "role": "neutral",
+        "displayName": "Rule Strong (printed)",
+        "theme": "light",
+        "canonical": "oklch(72.0% 0.038 249.6)",
+        "tonalRamp": [
+          "#010c1a",
+          "#152536",
+          "#304153",
+          "#4d6073",
+          "#6c7f93",
+          "#8da1b6",
+          "#b2c7dc",
+          "#e3f0fe"
+        ]
+      },
+      "print-line": {
+        "role": "primary",
+        "displayName": "Drafting Line (printed)",
+        "theme": "light",
+        "canonical": "oklch(30.6% 0.064 254.8)",
+        "tonalRamp": [
+          "#000b1e",
+          "#0b2442",
+          "#274161",
+          "#445f82",
+          "#637fa3",
+          "#84a1c6",
+          "#a8c7ee",
+          "#e4f0fe"
+        ]
+      },
+      "print-onprem": {
+        "role": "secondary",
+        "displayName": "On-prem Violet (printed)",
+        "theme": "light",
+        "canonical": "oklch(53.9% 0.179 291.4)",
+        "tonalRamp": [
+          "#0e002a",
+          "#2a055f",
+          "#471b94",
+          "#6340b8",
+          "#8163dd",
+          "#a187fe",
+          "#c4b9fe",
+          "#eeecff"
+        ]
+      },
+      "print-aws": {
+        "role": "secondary",
+        "displayName": "AWS Teal (printed)",
+        "theme": "light",
+        "canonical": "oklch(55.9% 0.102 220.9)",
+        "tonalRamp": [
+          "#000e13",
+          "#002934",
+          "#074758",
+          "#016880",
+          "#198ba8",
+          "#48adcb",
+          "#71d4f3",
+          "#d7f4fe"
+        ]
+      },
+      "print-rejected": {
+        "role": "chart",
+        "displayName": "Freeze Amber (printed)",
+        "theme": "light",
+        "canonical": "oklch(62.5% 0.130 78.1)",
+        "tonalRamp": [
+          "#120900",
+          "#322002",
+          "#553a05",
+          "#7b560b",
+          "#a37313",
+          "#ca932e",
+          "#f2b959",
+          "#feecd0"
+        ]
+      },
+      "print-failed": {
+        "role": "chart",
+        "displayName": "Fault Crimson (printed)",
+        "theme": "light",
+        "canonical": "oklch(50.2% 0.177 11.2)",
+        "tonalRamp": [
+          "#1d0106",
+          "#490217",
+          "#79052c",
+          "#a91944",
+          "#d04362",
+          "#f76783",
+          "#fea9b4",
+          "#ffe8ea"
+        ]
+      },
+      "print-signal": {
+        "role": "tertiary",
+        "displayName": "Safety Orange (printed)",
+        "theme": "light",
+        "canonical": "oklch(59.1% 0.158 49.2)",
+        "tonalRamp": [
+          "#180600",
+          "#3c1802",
+          "#662d05",
+          "#92440c",
+          "#c15c14",
+          "#ea7c37",
+          "#ffaf83",
+          "#ffeadf"
+        ]
+      },
+      "print-signal-ink": {
+        "role": "tertiary",
+        "displayName": "Signal Text (printed)",
+        "theme": "light",
+        "canonical": "oklch(50.9% 0.136 49.1)",
+        "tonalRamp": [
+          "#180600",
+          "#3d1802",
+          "#662d05",
+          "#93440b",
+          "#bc6027",
+          "#e1824c",
+          "#ffae83",
+          "#feeadf"
+        ]
+      },
+      "print-ok": {
+        "role": "neutral",
+        "displayName": "OK Green (printed)",
+        "theme": "light",
+        "canonical": "oklch(56.2% 0.124 157.2)",
+        "tonalRamp": [
+          "#000f06",
+          "#012c18",
+          "#034d2d",
+          "#077043",
+          "#2a935f",
+          "#52b57f",
+          "#7adca4",
+          "#c4ffda"
+        ]
+      },
+      "print-focus": {
+        "role": "neutral",
+        "displayName": "Focus Sky (printed)",
+        "theme": "light",
+        "canonical": "oklch(53.3% 0.169 254.7)",
+        "tonalRamp": [
+          "#000b1e",
+          "#01234a",
+          "#033f7c",
+          "#075cb0",
+          "#267dde",
+          "#57a0fb",
+          "#9cc7ff",
+          "#e4f0ff"
+        ]
+      },
+      "store-paper": {
+        "role": "store-neutral",
+        "displayName": "Shop Paper",
+        "theme": "store",
+        "canonical": "oklch(95.9% 0.010 87.5)",
+        "tonalRamp": [
+          "#0d0b07",
+          "#26241f",
+          "#423f3a",
+          "#605d57",
+          "#807d77",
+          "#a19e98",
+          "#c7c4bd",
+          "#f1eee7"
+        ]
+      },
+      "store-card": {
+        "role": "store-neutral",
+        "displayName": "Shop Card",
+        "theme": "store",
+        "canonical": "oklch(99.4% 0.007 88.6)",
+        "tonalRamp": [
+          "#0c0b08",
+          "#252420",
+          "#41403c",
+          "#5f5d59",
+          "#7f7d79",
+          "#a09e9a",
+          "#c6c4bf",
+          "#f0eee9"
+        ]
+      },
+      "store-ink": {
+        "role": "store-neutral",
+        "displayName": "Shop Ink",
+        "theme": "store",
+        "canonical": "oklch(27.1% 0.021 164.8)",
+        "tonalRamp": [
+          "#040e09",
+          "#1a2721",
+          "#36433d",
+          "#53625b",
+          "#72817a",
+          "#93a39b",
+          "#b8c9c1",
+          "#e2f3eb"
+        ]
+      },
+      "store-ink-2": {
+        "role": "store-neutral",
+        "displayName": "Shop Ink 2",
+        "theme": "store",
+        "canonical": "oklch(44.6% 0.020 167.7)",
+        "tonalRamp": [
+          "#040e09",
+          "#1b2722",
+          "#36433e",
+          "#53615b",
+          "#72817b",
+          "#93a39c",
+          "#b8c8c1",
+          "#e2f3ec"
+        ]
+      },
+      "store-ink-3": {
+        "role": "store-neutral",
+        "displayName": "Shop Ink 3",
+        "theme": "store",
+        "canonical": "oklch(54.0% 0.017 164.3)",
+        "tonalRamp": [
+          "#050d09",
+          "#1c2722",
+          "#38433d",
+          "#55615b",
+          "#74817a",
+          "#95a29c",
+          "#bbc8c1",
+          "#e5f2eb"
+        ]
+      },
+      "store-rule": {
+        "role": "store-neutral",
+        "displayName": "Shop Rule",
+        "theme": "store",
+        "canonical": "oklch(87.4% 0.022 85.9)",
+        "tonalRamp": [
+          "#0f0a03",
+          "#292318",
+          "#453f33",
+          "#635d50",
+          "#837d6f",
+          "#a49e90",
+          "#cac3b5",
+          "#f5eedf"
+        ]
+      },
+      "store-accent": {
+        "role": "store-primary",
+        "displayName": "Shop Green",
+        "theme": "store",
+        "canonical": "oklch(42.6% 0.072 165.5)",
+        "tonalRamp": [
+          "#000f08",
+          "#012c1e",
+          "#0a4c36",
+          "#306b54",
+          "#518b73",
+          "#72ad94",
+          "#97d4b9",
+          "#c1ffe3"
+        ]
+      },
+      "store-warn": {
+        "role": "store-tertiary",
+        "displayName": "Shop Amber",
+        "theme": "store",
+        "canonical": "oklch(52.9% 0.119 64.3)",
+        "tonalRamp": [
+          "#150800",
+          "#371d00",
+          "#5d3500",
+          "#874e01",
+          "#ad6c21",
+          "#d28d47",
+          "#fab36e",
+          "#ffead8"
+        ]
+      },
+      "store-warn-bg": {
+        "role": "store-tertiary",
+        "displayName": "Shop Amber Wash",
+        "theme": "store",
+        "canonical": "oklch(94.8% 0.038 81.5)",
+        "tonalRamp": [
+          "#120a00",
+          "#2d220d",
+          "#4a3e28",
+          "#695c45",
+          "#897b64",
+          "#aa9d84",
+          "#d1c2a9",
+          "#fcedd3"
+        ]
+      },
+      "store-ok": {
+        "role": "store-neutral",
+        "displayName": "Shop OK",
+        "theme": "store",
+        "canonical": "oklch(51.5% 0.110 157.6)",
+        "tonalRamp": [
+          "#000f06",
+          "#022c18",
+          "#044d2d",
+          "#0a7044",
+          "#399163",
+          "#5db383",
+          "#84daa8",
+          "#c4ffdb"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Sheet title in the top bar."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Panel headers and phase names."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Sentences in phase details, controls and hints."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "Phase detail, revision descriptions, legend, asides."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Revision table headers; schematic node and zone lettering."
+      },
+      "measure": {
+        "displayName": "Measure",
+        "purpose": "Every value read from the running system: counts, rps, checksums, timestamps, hosts."
+      },
+      "store-display": {
+        "displayName": "Store Display",
+        "purpose": "Store masthead (related surface)."
+      }
+    },
+    "shadows": [
+      {
+        "name": "tooltip-lift",
+        "value": "0 6px 18px rgba(0, 0, 0, 0.25)",
+        "purpose": "Chart hover tooltip only; the one floating layer."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Presses, toggles, hold-fill retract, row and confirm entrances."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Revision cloud drawing itself at cutover (1100ms, 250ms delay)."
+      },
+      {
+        "name": "press",
+        "value": "160ms",
+        "purpose": "Button scale 0.97 (icon button 0.95)."
+      },
+      {
+        "name": "state",
+        "value": "200–300ms ease",
+        "purpose": "Colour, border and stroke changes; node and route state."
+      },
+      {
+        "name": "request-flow",
+        "value": "900ms linear infinite",
+        "purpose": "Dots marching along the active route."
+      },
+      {
+        "name": "hold-confirm",
+        "value": "1600ms linear",
+        "purpose": "Hold-to-confirm fill for irreversible actions."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Flow and spinners stop; cloud and delta render already drawn."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "720px",
+        "purpose": "Schematic holds 640px min width and scrolls; header asides wrap."
+      },
+      {
+        "name": "single-column",
+        "value": "980px",
+        "purpose": "Console collapses to one column; main column no longer sticky."
+      },
+      {
+        "name": "store-single-column",
+        "value": "760px",
+        "purpose": "Store catalogue/orders grid collapses."
+      },
+      {
+        "name": "sheet-max",
+        "value": "1600px"
+      },
+      {
+        "name": "store-max",
+        "value": "1080px"
+      }
+    ],
+    "chartPalette": {
+      "order": [
+        "onprem",
+        "aws",
+        "rejected",
+        "failed"
+      ],
+      "dark": {
+        "surface": "#0E2847",
+        "values": [
+          "#A47BE6",
+          "#1597AE",
+          "#C2841A",
+          "#D63C59"
+        ]
+      },
+      "light": {
+        "surface": "#F6F8FB",
+        "values": [
+          "#7353CC",
+          "#00819E",
+          "#B27C00",
+          "#B1234A"
+        ]
+      },
+      "validation": "Light: all pass. Dark: all pass except violet/cyan adjacent pair at CVD ΔE 8.0 (warn band), covered by the legend and 2px segment gaps.",
+      "segmentGap": "2px",
+      "topSegmentRadius": "2px"
+    },
+    "relatedSurfaces": [
+      {
+        "path": "apps/store/web",
+        "note": "Quieter retail look; shares type families, square form and on-prem/AWS identity inks. Follows prefers-color-scheme; dark store tokens: paper #15201b, card #1b2822, ink #eef2ee, ink-2 #b8c4bd, ink-3 #8f9e96, rule #2e3e36, accent #7cc7a3, warn #f0b45c, warn-bg #3a2c14, ok #6cd39d."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The next phase, named. One per sheet.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Start Copy</button>",
+      "css": ".ds-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 0 16px; border: 1px solid var(--rule-strong, #4a6d93); border-radius: 0; background: transparent; color: var(--ink, #e6f0f7); font-family: var(--font, 'Barlow', system-ui, sans-serif); font-size: 15px; font-weight: 500; cursor: pointer; overflow: hidden; transition: transform 160ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)), background-color 160ms ease, border-color 160ms ease; } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: 2px solid var(--focus, #8fd3ff); outline-offset: 2px; } .ds-btn-primary { background: var(--line, #d2e3f0); color: var(--ground, #0e2847); border-color: var(--line, #d2e3f0); font-weight: 600; } .ds-btn-primary:hover { background: var(--ink, #e6f0f7); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Rollback, reset and other reversible controls.",
+      "html": "<button class=\"ds-btn ds-btn-secondary\">Roll back to on-prem</button>",
+      "css": ".ds-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 0 16px; border: 1px solid var(--rule-strong, #4a6d93); border-radius: 0; background: transparent; color: var(--ink, #e6f0f7); font-family: var(--font, 'Barlow', system-ui, sans-serif); font-size: 15px; font-weight: 500; cursor: pointer; overflow: hidden; transition: transform 160ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)), background-color 160ms ease, border-color 160ms ease; } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: 2px solid var(--focus, #8fd3ff); outline-offset: 2px; } .ds-btn-secondary:hover { background: var(--well, #0b2240); }"
+    },
+    {
+      "name": "Hold-to-confirm Button",
+      "kind": "button",
+      "refersTo": "button-hold-danger",
+      "description": "Irreversible actions: press and hold 1600ms while a Safety Orange fill sweeps across.",
+      "html": "<button class=\"ds-btn ds-btn-hold\"><span class=\"ds-hold-fill\"></span><span class=\"ds-hold-content\">Hold to decommission on-prem</span></button>",
+      "css": ".ds-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 0 16px; border: 1px solid var(--rule-strong, #4a6d93); border-radius: 0; background: transparent; color: var(--ink, #e6f0f7); font-family: var(--font, 'Barlow', system-ui, sans-serif); font-size: 15px; font-weight: 500; cursor: pointer; overflow: hidden; transition: transform 160ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)), background-color 160ms ease, border-color 160ms ease; } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: 2px solid var(--focus, #8fd3ff); outline-offset: 2px; } .ds-btn-hold { border-color: var(--signal, #f08a24); } .ds-hold-fill { position: absolute; inset: 0; background: var(--signal, #f08a24); opacity: 0.35; clip-path: inset(0 100% 0 0); transition: clip-path 200ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)); } .ds-btn-hold:active .ds-hold-fill { clip-path: inset(0 0 0 0); transition: clip-path 1600ms linear; } .ds-btn-hold:active { transform: none; } .ds-btn-hold:hover { background: var(--well, #0b2240); } .ds-hold-content { position: relative; }"
+    },
+    {
+      "name": "Fault Injection Toggle",
+      "kind": "input",
+      "refersTo": "toggle-on",
+      "description": "Arms fault injection; turns Safety Orange when on.",
+      "html": "<label class=\"ds-toggle\"><input type=\"checkbox\" checked> Fault injection</label>",
+      "css": ".ds-toggle { display: flex; align-items: center; gap: 10px; font-family: var(--font, 'Barlow', system-ui, sans-serif); font-size: 0.88rem; color: var(--ink-2, #b2c8db); cursor: pointer; } .ds-toggle input { appearance: none; width: 30px; height: 18px; margin: 0; border: 1px solid var(--rule-strong, #4a6d93); border-radius: 9px; position: relative; cursor: pointer; transition: background-color 200ms ease, border-color 200ms ease; } .ds-toggle input::after { content: ''; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: 50%; background: var(--ink-2, #b2c8db); transition: transform 200ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)); } .ds-toggle input:checked { background: var(--signal, #f08a24); border-color: var(--signal, #f08a24); } .ds-toggle input:checked::after { transform: translateX(12px); background: var(--sheet, #102d50); } .ds-toggle input:focus-visible { outline: 2px solid var(--focus, #8fd3ff); outline-offset: 2px; }"
+    },
+    {
+      "name": "Env Tag",
+      "kind": "chip",
+      "refersTo": "env-tag",
+      "description": "Names the environment serving shoppers, dot in its identity ink.",
+      "html": "<span class=\"ds-env-tag ds-env-aws\">AWS</span> <span class=\"ds-env-tag ds-env-onprem\">On-prem</span>",
+      "css": ".ds-env-tag { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px 2px 8px; border: 1px solid var(--rule-strong, #4a6d93); color: var(--ink, #e6f0f7); font-family: var(--lettering, 'Barlow Condensed', 'Barlow', system-ui, sans-serif); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.85rem; transition: border-color 200ms ease; } .ds-env-tag::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--env); } .ds-env-aws { --env: var(--aws, #1597ae); } .ds-env-onprem { --env: var(--onprem, #a47be6); } .ds-env-tag:hover { border-color: var(--env); }"
+    },
+    {
+      "name": "Sheet Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Square hairline panel with a lettered header and Ink 3 aside.",
+      "html": "<section class=\"ds-panel\"><header><h2>Phase schedule</h2><span class=\"ds-aside\">migration log</span></header><div class=\"ds-panel-body\">On-prem holds <span class=\"ds-num\">1103</span> orders, <span class=\"ds-num\">40</span> products.</div></section>",
+      "css": ".ds-panel { background: var(--sheet, #102d50); border: 1px solid var(--rule-strong, #4a6d93); color: var(--ink, #e6f0f7); font-family: var(--font, 'Barlow', system-ui, sans-serif); font-size: 15px; line-height: 1.45; } .ds-panel header { display: flex; align-items: baseline; gap: 12px; padding: 8px 14px; border-bottom: 1px solid var(--rule, #24456b); } .ds-panel h2 { margin: 0; font-family: var(--lettering, 'Barlow Condensed', 'Barlow', system-ui, sans-serif); font-weight: 600; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.08em; } .ds-aside { margin-left: auto; color: var(--ink-3, #87a3bc); font-size: 0.8rem; } .ds-panel-body { padding: 14px; color: var(--ink-2, #b2c8db); font-size: 0.86rem; } .ds-num { font-family: var(--mono, 'JetBrains Mono', ui-monospace, monospace); font-variant-numeric: tabular-nums; font-size: 0.86em; letter-spacing: -0.01em; color: var(--ink, #e6f0f7); }"
+    },
+    {
+      "name": "Phase Row",
+      "kind": "custom",
+      "refersTo": "phase-row-next",
+      "description": "Schedule entry: status glyph, lettered name, mono time, detail; next phase on Well Blue.",
+      "html": "<div class=\"ds-phase\"><svg class=\"ds-glyph\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"8\" r=\"5.5\"/><path d=\"M5.5 8.2l1.7 1.7 3.3-3.6\"/></svg><div class=\"ds-name\">Verify <span class=\"ds-when\">10:43:38</span></div><div class=\"ds-detail\">All 2 tables match.</div></div>",
+      "css": ".ds-phase { display: grid; grid-template-columns: 22px 1fr; gap: 2px 10px; padding: 8px 14px; background: var(--well, #0b2240); color: var(--ink, #e6f0f7); font-family: var(--font, 'Barlow', system-ui, sans-serif); transition: background-color 200ms ease; } .ds-phase:hover { background: var(--sheet, #102d50); } .ds-glyph { grid-row: span 2; color: var(--ok, #4cc38a); margin-top: 2px; } .ds-name { display: flex; align-items: baseline; gap: 8px; font-family: var(--lettering, 'Barlow Condensed', 'Barlow', system-ui, sans-serif); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.95rem; } .ds-when { margin-left: auto; font-family: var(--mono, 'JetBrains Mono', ui-monospace, monospace); font-variant-numeric: tabular-nums; font-weight: 400; font-size: 0.75rem; color: var(--ink-3, #87a3bc); text-transform: none; letter-spacing: 0; } .ds-detail { font-size: 0.86rem; color: var(--ink-2, #b2c8db); }"
+    },
+    {
+      "name": "Revision Block",
+      "kind": "custom",
+      "refersTo": "revision-delta",
+      "description": "Title-block revision table; milestones carry a Safety Orange delta.",
+      "html": "<table class=\"ds-rev\"><thead><tr><th>Rev</th><th>Time</th><th>Description</th></tr></thead><tbody><tr class=\"ds-milestone\"><td><span class=\"ds-delta\">B</span></td><td class=\"ds-t\">10:43:39</td><td>The front door sends traffic to the AWS side.</td></tr><tr><td></td><td class=\"ds-t\">10:43:37</td><td>Copy started.</td></tr></tbody></table>",
+      "css": ".ds-rev { width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font, 'Barlow', system-ui, sans-serif); background: var(--sheet, #102d50); } .ds-rev th { font-family: var(--lettering, 'Barlow Condensed', 'Barlow', system-ui, sans-serif); font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--ink-3, #87a3bc); text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--rule-strong, #4a6d93); } .ds-rev td { padding: 5px 10px; border-bottom: 1px solid var(--rule, #24456b); color: var(--ink-2, #b2c8db); vertical-align: top; } .ds-rev tr:hover td { background: var(--well, #0b2240); } .ds-rev .ds-milestone td { color: var(--ink, #e6f0f7); } .ds-t { font-family: var(--mono, 'JetBrains Mono', ui-monospace, monospace); font-variant-numeric: tabular-nums; white-space: nowrap; } .ds-delta { display: inline-flex; align-items: flex-end; justify-content: center; width: 20px; height: 18px; padding-bottom: 1px; font-family: var(--lettering, 'Barlow Condensed', 'Barlow', system-ui, sans-serif); font-weight: 600; text-transform: uppercase; font-size: 0.75rem; color: var(--ground, #0e2847); background: var(--signal, #f08a24); clip-path: polygon(50% 0, 100% 100%, 0 100%); }"
+    },
+    {
+      "name": "Store Served-by Badge",
+      "kind": "card",
+      "refersTo": "store-button",
+      "description": "Related store surface: the shopper-facing badge bordered in the serving environment's ink.",
+      "html": "<div class=\"ds-served\"><span class=\"ds-sl\">Served by</span><span class=\"ds-se\">AWS</span><span class=\"ds-sd\">rds · store</span></div>",
+      "css": ".ds-served { display: inline-grid; grid-template-columns: auto auto; align-items: baseline; gap: 0 10px; padding: 10px 14px; border: 2px solid var(--aws, #00819e); background: #fffdf8; color: #1d2a24; font-family: var(--font, 'Barlow', system-ui, sans-serif); transition: border-color 300ms ease; } .ds-served:hover { border-color: #7353cc; } .ds-sl { color: #66726c; font-size: 0.8rem; } .ds-se { font-family: var(--lettering, 'Barlow Condensed', 'Barlow', system-ui, sans-serif); font-weight: 600; text-transform: uppercase; font-size: 1.5rem; } .ds-sd { grid-column: 1 / -1; font-family: var(--mono, 'JetBrains Mono', ui-monospace, monospace); font-variant-numeric: tabular-nums; font-size: 0.78rem; color: #4a5852; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Revised Drawing",
+    "overview": "The migration is a revision to a technical drawing of the system. The console is one drawing sheet on cyanotype ground: a live schematic, a phase schedule, and a revision block, each read from the running system, set in hairline panels with square corners. Nothing glows, nothing floats on a card grid. Line work at two weights does the structure, a 20px drafting grid sits faintly behind the schematic, and a single signal orange marks faults, freeze and the point of no return. Light mode is the same sheet printed: near-white paper, blue-black ink, identical geometry.\n\nDensity is that of an instrument, not a marketing page: 15px body, 12px gutters, condensed engineering lettering for every label, and monospace only where a figure was measured. Motion is functional drafting: request flow marches along the active route, and at cutover a revision cloud draws itself around the changed path while a delta triangle with the new revision letter is entered in the revision block.\n\nThe store (`apps/store/web`) is a related surface in the same product, not a second world. It is quieter retail: warm paper, green-black ink, one green accent, ruled lists instead of panels. It shares the type families, the square-cornered form, and the on-prem and AWS identity inks, so a viewer moving from console to store recognises which side is serving them.",
+    "keyCharacteristics": [
+      "One sheet, hairline panels, zero radius on every surface and control.",
+      "Cyanotype dark default (Prussian ground, pale cyan line) with a printed light theme of identical structure.",
+      "Two identity inks (violet on-prem, teal AWS) shared by schematic routes, chart series, the serving tag and the store's served-by badge.",
+      "Safety orange is the only signal colour, rationed to faults, freeze, irreversible actions and revision marks.",
+      "Condensed uppercase lettering for labels; monospace with tabular figures for measured values only.",
+      "Drafting-native devices: dash-dot zone outlines, dimension lines, revision clouds, delta triangles, a title-block revision table."
+    ],
+    "rules": [
+      {
+        "name": "The Rationed Orange Rule",
+        "body": "Safety Orange appears only where something is wrong, frozen, irreversible, or revised. It is never a chart fill, never decoration, never a brand accent.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Inks Rule",
+        "body": "On-prem is always violet and AWS is always teal, on every surface that names an environment: schematic, chart, serving tag, and store badge. No other hue may stand for either side.",
+        "section": "colors"
+      },
+      {
+        "name": "The Printed Sheet Rule",
+        "body": "Light mode changes ink and paper only. Every role, weight, and geometry stays identical.",
+        "section": "colors"
+      },
+      {
+        "name": "The Measured Mono Rule",
+        "body": "Monospace means \"this value was read from the running system\". Never set prose, labels, or buttons in mono, and never set a live figure in Barlow.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lettering Rule",
+        "body": "Every label that names a thing on the drawing (nodes, zones, panels, phases, column heads) is condensed, uppercase and tracked. Sentences are never uppercase.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hairline Rule",
+        "body": "Separation is a 1px rule, never a shadow. The tooltip is the one floating element and the only one with a shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** draw every surface as part of one sheet: square corners, 1px Rule Strong borders, 12px gaps.",
+      "**Do** colour on-prem violet and AWS teal everywhere an environment is named, in both the console and the store.",
+      "**Do** keep the chart series in fixed stack order (on-prem, AWS, rejected, failed) with the 2px surface gaps and an always-visible legend.",
+      "**Do** set every measured value in JetBrains Mono with tabular figures.",
+      "**Do** use drafting devices for change: phantom dash-dot outlines for what is not built, revision clouds and delta triangles for what was revised.",
+      "**Do** make irreversible actions hold-to-confirm with the Safety Orange sweep.",
+      "**Do** honour `prefers-reduced-motion`: stop the flow and spinners, show the revision cloud and delta already drawn."
+    ],
+    "donts": [
+      "**Don't** use Safety Orange as a chart series, fill, or decorative accent.",
+      "**Don't** add drop shadows to panels, buttons or nodes; the chart tooltip is the only shadowed element.",
+      "**Don't** round panel or button corners.",
+      "**Don't** set labels or prose in monospace, or live figures in Barlow.",
+      "**Don't** introduce a third environment hue or reuse violet or teal for anything but the two environments."
+    ]
+  }
+}
