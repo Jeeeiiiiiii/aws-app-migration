@@ -1,0 +1,9 @@
+{
+  "name": "@demo/traffic",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/shoppers.ts",
+    "typecheck": "tsc -p ."
+  }
+}

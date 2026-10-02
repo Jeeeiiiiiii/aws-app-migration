@@ -1,0 +1,30 @@
+{
+  "name": "@demo/console",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.ts",
+    "dev:web": "vite",
+    "build": "vite build",
+    "typecheck": "tsc -p . && tsc -p web",
+    "test": "node --test src/*.test.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudformation": "^3",
+    "@aws-sdk/client-route-53": "^3",
+    "@demo/migration": "workspace:*",
+    "@demo/store-db": "workspace:*",
+    "@hono/node-server": "^1",
+    "hono": "^4",
+    "pg": "^8"
+  },
+  "devDependencies": {
+    "@demo/front-door": "workspace:*",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^5",
+    "react": "^19",
+    "react-dom": "^19",
+    "vite": "^7"
+  }
+}

@@ -1,0 +1,90 @@
+name: aws-app-migration
+
+x-aws: &aws
+  AWS_ENDPOINT_URL: http://floci:4566
+  AWS_REGION: us-east-1
+  AWS_ACCESS_KEY_ID: test
+  AWS_SECRET_ACCESS_KEY: test
+
+x-runtime: &runtime
+  image: aws-app-migration-runtime:latest
+  build: { context: ., target: runtime, secrets: [extra_ca] }
+  init: true
+  restart: unless-stopped
+
+services:
+  # Local AWS. Runs as root so it can start the RDS and ECS containers through the
+  # host's Docker socket, and puts them on this project's network.
+  floci:
+    image: floci/floci:latest-compat
+    user: "0:0"
+    environment:
+      FLOCI_SERVICES_DOCKER_NETWORK: aws-app-migration
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports: ["4566:4566"]
+
+  # ---- On-prem ----
+  store-onprem-db:
+    image: postgres:16-alpine
+    container_name: store-onprem-db
+    environment: { POSTGRES_DB: store, POSTGRES_USER: store, POSTGRES_PASSWORD: store }
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "store", "-d", "store"]
+      interval: 2s
+      retries: 30
+
+  store-onprem:
+    image: aws-app-migration-store:latest
+    build: { context: ., target: store, secrets: [extra_ca] }
+    container_name: store-onprem
+    init: true
+    environment:
+      SERVING_ENV: on-prem
+      SEED_ON_EMPTY: "true"
+      DB_HOST: store-onprem-db
+      DB_LABEL: on-prem postgres
+    depends_on: { store-onprem-db: { condition: service_healthy } }
+
+  # ---- Around the migration ----
+  front-door:
+    <<: *runtime
+    command: ["node", "apps/front-door/src/server.ts"]
+    environment:
+      <<: *aws
+      LOAD_BALANCER_HOST: floci
+    ports: ["8080:8080"]
+    depends_on: [floci, store-onprem]
+
+  console:
+    <<: *runtime
+    command: ["node", "apps/console/src/server.ts"]
+    environment:
+      <<: *aws
+      DB_HOST: store-onprem-db
+      LOAD_BALANCER_HOST: floci
+      STORE_IMAGE: aws-app-migration-store:latest
+      FRONT_DOOR_URL: http://front-door:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - migration-data:/data/migration
+    ports: ["4000:4000"]
+    depends_on: [floci, store-onprem, front-door]
+
+  traffic:
+    <<: *runtime
+    command: ["node", "apps/traffic/src/shoppers.ts"]
+    environment:
+      FRONT_DOOR_URL: http://front-door:8080
+    depends_on: [front-door]
+
+networks:
+  default:
+    name: aws-app-migration
+
+volumes:
+  migration-data:
+
+secrets:
+  extra_ca:
+    file: ${EXTRA_CA_CERT:-/dev/null}

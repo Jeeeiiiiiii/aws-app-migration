@@ -29,7 +29,11 @@ export function dbConfigFromEnv(env: NodeJS.ProcessEnv = process.env): DbConfig 
 }
 
 export function connect(config: DbConfig): pg.Pool {
-  return new pg.Pool({ ...config, max: 5, connectionTimeoutMillis: 5_000 });
+  const pool = new pg.Pool({ ...config, max: 5, connectionTimeoutMillis: 5_000 });
+  // A database going away (decommission, reset, a restart) drops idle connections.
+  // That is expected here; the next query reconnects or fails on its own.
+  pool.on("error", (err) => console.warn(`database connection lost: ${err.message}`));
+  return pool;
 }
 
 const SCHEMA = `

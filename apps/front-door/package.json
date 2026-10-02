@@ -1,0 +1,19 @@
+{
+  "name": "@demo/front-door",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./traffic": "./src/traffic.ts"
+  },
+  "scripts": {
+    "start": "node src/server.ts",
+    "typecheck": "tsc -p .",
+    "test": "node --test src/*.test.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-route-53": "^3",
+    "@demo/migration": "workspace:*",
+    "@hono/node-server": "^1",
+    "hono": "^4"
+  }
+}
